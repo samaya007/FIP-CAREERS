@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Opportunities</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Volunteer Opportunities</h1>
+
+<div class="dropdown">
+  <button class="dropbtn" onclick="toggleDropdown('dropdownContent')">Select Volunteer Opportunity</button>
+  <div class="dropdown-content" id="dropdownContent">
+    <a href="#">At Fanshawe College March 3rd 11:00am <b>  REF NO. #6311</b></a>
+    <a href="#">At Fanshawe College March 2nd 11:00am <b> REF NO. #6322</b></a>
+    <a href="#">At Fanshawe College October 5th 11:00am  <b> REF NO. #6391 </b> </a>
+  </div>
+</div>
+
+
+<div class="dropdown1">
+  <button class="dropbtn" onclick="toggleDropdown('careerDropdownContent')">Select Career Opportunity</button>
+  <div class="dropdown-content" id="careerDropdownContent">
+    <a href="#">Position 1 at Company A <b>REF NO. #C101</b></a>
+    <a href="#">Position 2 at Company B <b>REF NO. #C102</b></a>
+    <a href="#">Position 3 at Company C <b>REF NO. #C103</b></a>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <h2>Volunteer Form</h2>
+  <form id="volunteerForm">
+      <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <input type="text" id="fullName" name="fullName" required>
+      </div>
+      <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+          <label for="refNo">Ref No:</label>
+          <input type="text" id="refNo" name="refNo" required>
+          <span class="error">Please enter valid Ref No.</span>
+      </div>
+      <div class="form-group">
+          <label for="reason">Why do you want to volunteer here?</label>
+          <textarea id="reason" name="reason" rows="4" required></textarea>
+      </div>
+      <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+const form = document.getElementById('volunteerForm');
+const refNoInput = document.getElementById('refNo');
+const refNoError = document.querySelector('.error');
+
+form.addEventListener('submit', function(event) {
+    if (!refNoInput.value.match(/^\d+$/)) {
+        event.preventDefault();
+        refNoError.style.display = 'block';
+    }
+});
+
+refNoInput.addEventListener('input', function() {
+    if (refNoInput.value.match(/^\d+$/)) {
+        refNoError.style.display = 'none';
+    } else {
+        refNoError.style.display = 'block';
+    }
+});
+
+function toggleDropdown(dropdownContent) {
+    var dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.classList.toggle("show");
+}
+
+function toggleDropdown(dropdownId) {
+    var dropdownContent = document.getElementById(dropdownId);
+    dropdownContent.classList.toggle("show");
+}
+
+
+
+</script>
+
+</body>
+</html>
